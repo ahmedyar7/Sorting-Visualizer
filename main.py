@@ -36,7 +36,7 @@ class CSV:
     @classmethod
     def get_transaction(cls, start_date, end_date):
 
-        df = pd.read_csv(cls.CSV_FILE)
+        df = pd.read_csv(CSV.CSV_FILE)
 
         df["date"] = pd.to_datetime(df["date"], format=CSV.DATE_FORMAT)
         start_date = dt.strptime(start_date, CSV.DATE_FORMAT)
@@ -53,6 +53,32 @@ class CSV:
             print(
                 f"Transaction from {start_date.strftime(CSV.DATE_FORMAT)} to {end_date.strftime(CSV.DATE_FORMAT)}"
             )
+
+            print(
+                filtered_df.to_string(
+                    index=False,
+                    formatters={
+                        "date": lambda x: x.strftime(CSV.DATE_FORMAT),
+                    },
+                )
+            )
+
+            total_income = filtered_df[filtered_df["category"] == "Income"][
+                "amount"
+            ].sum()
+
+            total_expanse = filtered_df[filtered_df["category"] == "Expense"][
+                "amount"
+            ].sum()
+
+            print("\n Summary: ")
+
+            print(f"Total Income: ${total_income:.2}")
+            print(f"Total Expense: ${total_expanse:.2}")
+
+            print(f"Net Saving ${(total_income-total_expanse):.2f}")
+
+        return filtered_df
 
 
 def add():
@@ -74,3 +100,6 @@ def add():
         category=category,
         description=description,
     )
+
+
+CSV.get_transaction(start_date="01-01-2023", end_date="30-07-3034")
