@@ -3,19 +3,17 @@ import random
 import sys
 from draw_information import DrawInformation
 from visulizer import draw
-from algorithms import bubble_sort, insertion_sort, selection_sort
+from algorithms import *
 
 pygame.init()
 
 
 def generate_starting_list(n, min_val, max_val) -> list:
     """This function would randomly generate the starting list for sorting"""
-
     list = []
     for _ in range(n):
         value = random.randint(min_val, max_val)
         list.append(value)
-
     return list
 
 
@@ -85,6 +83,26 @@ def main():
             elif events.key == pygame.K_s and not sorting:
                 sorting_algorithm = selection_sort
                 sorting_algorithm_name = "Selection Sort"
+
+            elif events.key == pygame.K_m and not sorting:
+                sorting_algorithm = merge_sort
+                sorting_algorithm_name = "Merge Sort"
+
+            elif events.key == pygame.K_q and not sorting:
+                sorting_algorithm = quick_sort
+                sorting_algorithm_name = "Quick Sort"
+
+            elif events.key == pygame.K_c and not sorting:
+                sorting_algorithm = counting_sort
+                sorting_algorithm_name = "Counting Sort"
+
+            elif events.key == pygame.K_x and not sorting:
+                sorting_algorithm = radix_sort
+                sorting_algorithm_name = "Radix Sort"
+
+            elif events.key == pygame.K_h and not sorting:
+                sorting_algorithm = heap_sort
+                sorting_algorithm_name = "Heap Sort"
 
     pygame.quit()
     sys.exit()

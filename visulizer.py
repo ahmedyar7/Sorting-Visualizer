@@ -27,7 +27,9 @@ def draw(draw_info, algo_name, ascending) -> None:
     )
     draw_info.window.blit(controls, (draw_info.width / 2 - controls.get_width() / 2, 5))
     sorting = draw_info.FONT.render(
-        "I - Insertion Sort | B - Bubble Sort", 1, draw_info.WHITE
+        "I - Insertion Sort | B - Bubble Sort | S - Selection Sort | Q - Quick Sort | X - Radix Sort | C - Counting ",
+        1,
+        draw_info.WHITE,
     )
     draw_info.window.blit(sorting, (draw_info.width / 2 - sorting.get_width() / 2, 35))
     # Drawing in the center
