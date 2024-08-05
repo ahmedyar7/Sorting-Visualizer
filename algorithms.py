@@ -1,4 +1,5 @@
 from visulizer import draw_list
+from main import stop_sound
 
 
 def bubble_sort(draw_info, ascending=True):
@@ -13,7 +14,7 @@ def bubble_sort(draw_info, ascending=True):
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
                 draw_list(
                     draw_info=draw_info,
-                    color_positions={j: draw_info.GREEN, j + 1: draw_info.RED},
+                    color_positions={j: draw_info.RED, j + 1: draw_info.RED},
                     clear_bg=True,
                 )
                 yield True
@@ -37,9 +38,8 @@ def insertion_sort(draw_info, ascending=True):
             lst[i] = lst[i - 1]
             i -= 1
             lst[i] = current
-            draw_list(draw_info, {i: draw_info.GREEN, i - 1: draw_info.RED}, True)
+            draw_list(draw_info, {i: draw_info.RED, i - 1: draw_info.RED}, True)
             yield True
-
     return lst
 
 
@@ -56,9 +56,10 @@ def selection_sort(draw_info, ascending=True):
 
         lst[i], lst[min_idx] = lst[min_idx], lst[i]
 
-        draw_list(draw_info, {i: draw_info.GREEN, min_idx: draw_info.RED}, True)
+        draw_list(draw_info, {i: draw_info.RED, min_idx: draw_info.RED}, True)
         yield True
 
+    stop_sound()
     return lst
 
 
@@ -81,20 +82,20 @@ def merge_sort(draw_info, ascending=True):
                     lst[k] = right_half[j]
                     j += 1
                 draw_info.list[start_idx + k] = lst[k]
-                draw_list(draw_info, {start_idx + k: draw_info.GREEN}, True)
+                draw_list(draw_info, {start_idx + k: draw_info.RED}, True)
                 k += 1
                 yield True
             while i < len(left_half):
                 lst[k] = left_half[i]
                 draw_info.list[start_idx + k] = lst[k]
-                draw_list(draw_info, {start_idx + k: draw_info.GREEN}, True)
+                draw_list(draw_info, {start_idx + k: draw_info.RED}, True)
                 i += 1
                 k += 1
                 yield True
             while j < len(right_half):
                 lst[k] = right_half[j]
                 draw_info.list[start_idx + k] = lst[k]
-                draw_list(draw_info, {start_idx + k: draw_info.GREEN}, True)
+                draw_list(draw_info, {start_idx + k: draw_info.RED}, True)
                 j += 1
                 k += 1
                 yield True
@@ -113,14 +114,14 @@ def quick_sort(draw_info, ascending=True):
                 lst[i], lst[j] = lst[j], lst[i]
                 draw_list(
                     draw_info,
-                    color_positions={i: draw_info.GREEN, j: draw_info.RED},
+                    color_positions={i: draw_info.RED, j: draw_info.RED},
                     clear_bg=True,
                 )
                 yield True
         lst[i + 1], lst[high] = lst[high], lst[i + 1]
         draw_list(
             draw_info,
-            color_positions={i + 1: draw_info.GREEN, high: draw_info.RED},
+            color_positions={i + 1: draw_info.RED, high: draw_info.RED},
             clear_bg=True,
         )
         yield True
@@ -158,7 +159,7 @@ def heap_sort(draw_info, ascending=True):
             lst[i], lst[largest] = lst[largest], lst[i]
             draw_list(
                 draw_info,
-                color_positions={i: draw_info.GREEN, largest: draw_info.RED},
+                color_positions={i: draw_info.RED, largest: draw_info.RED},
                 clear_bg=True,
             )
             yield True
@@ -173,7 +174,7 @@ def heap_sort(draw_info, ascending=True):
         lst[i], lst[0] = lst[0], lst[i]
         draw_list(
             draw_info,
-            color_positions={i: draw_info.GREEN, 0: draw_info.RED},
+            color_positions={i: draw_info.RED, 0: draw_info.RED},
             clear_bg=True,
         )
         yield True
@@ -208,7 +209,7 @@ def counting_sort(draw_info, ascending=True):
         count[lst[i] - min_val] -= 1
         draw_list(
             draw_info,
-            color_positions={i: draw_info.GREEN},
+            color_positions={i: draw_info.RED},
             clear_bg=True,
         )
         yield True
@@ -218,7 +219,7 @@ def counting_sort(draw_info, ascending=True):
         lst[i] = output[i]
         draw_list(
             draw_info,
-            color_positions={i: draw_info.GREEN},
+            color_positions={i: draw_info.RED},
             clear_bg=True,
         )
         yield True
@@ -250,7 +251,7 @@ def radix_sort(draw_info, ascending=True):
             count[index % 10] -= 1
             draw_list(
                 draw_info,
-                color_positions={i: draw_info.GREEN},
+                color_positions={i: draw_info.RED},
                 clear_bg=True,
             )
             yield True
