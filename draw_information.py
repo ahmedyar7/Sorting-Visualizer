@@ -18,19 +18,19 @@ class DrawInformation:
 
     # This contain different shades of gray
     GRADIENT = [
-        (255, 160, 122),  # Light Salmon
-        (250, 128, 114),  # Salmon
-        (233, 150, 122),  # Dark Salmon
-        (255, 140, 0),  # Dark Orange
-        (255, 165, 0),  # Orange
-        (255, 69, 0),  # Red Orange
-        (255, 127, 80),  # Coral
-        (255, 99, 71),  # Tomato
-        (255, 114, 86),  # Sizzling Red
-        (255, 115, 77),  # Outrageous Orange
-        (255, 204, 92),  # Orange Yellow
-        (255, 128, 0),  # Bittersweet Orange
-        (255, 117, 24),  # Pumpkin
+        (220, 220, 220),  # Gainsboro
+        (211, 211, 211),  # Light Gray
+        (192, 192, 192),  # Silver
+        (169, 169, 169),  # Dark Gray
+        (128, 128, 128),  # Gray
+        (105, 105, 105),  # Dim Gray
+        (96, 96, 96),  # Davy's Gray
+        (47, 79, 79),  # Dark Slate Gray
+        (69, 69, 69),  # Jet
+        (33, 33, 33),  # Onyx
+        (25, 25, 25),  # Eerie Black
+        (18, 18, 18),  # Chinese Black
+        (13, 13, 13),  # Raisin Black
     ]
 
     FONT = pygame.font.SysFont("Aptos", 25)
@@ -102,8 +102,7 @@ def draw_list(draw_info, color_positions={}, clear_bg=False) -> None:
 
     # This function would take the height & x_cor of the list
     # Then we need to render the block representing the valuse
-    # All the blocks should contain different colors of easy difference
-
+    # All the blocks should contain different colors of easy differenc
     lst = draw_info.list
 
     if clear_bg:
@@ -136,7 +135,7 @@ def draw_list(draw_info, color_positions={}, clear_bg=False) -> None:
         )
 
     if clear_bg:
-        color = color_positions[i]
+        pygame.display.update()
 
 
 def generate_starting_list(n, min_val, max_val) -> list:
@@ -166,7 +165,7 @@ def bubble_sort(draw_info, ascending=False):
 
             if (num1 > num2 and ascending) or (num1 < num2 and not ascending):
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
-                # draw_list()
+                draw_list(draw_info, {j: draw_info.GREEN, j + 1: draw_info.RED})
                 yield True
 
     return lst
@@ -186,6 +185,10 @@ def main():
     draw_information = DrawInformation(height=700, width=600, list=random_list)
     sorting = False
     ascending = True
+
+    sorting_algorithm_name = "Bubble Sort"
+    sorting_algorithm = bubble_sort
+    sorting_algorithm_generator = None
 
     while run:
 
@@ -207,11 +210,12 @@ def main():
 
             elif events.key == pygame.K_SPACE and sorting == False:
                 sorting = True
+                sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
 
             elif events.key == pygame.K_a and not sorting:
                 ascending = True
 
-            elif events.key == pygame.K_a and not sorting:
+            elif events.key == pygame.K_d and not sorting:
                 ascending = False
 
     pygame.quit()
