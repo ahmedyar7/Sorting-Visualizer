@@ -18,23 +18,23 @@ class DrawInformation:
 
     # This contain different shades of gray
     GRADIENT = [
-        (230, 230, 250),  # Lavender
-        (216, 191, 216),  # Thistle
-        (221, 160, 221),  # Plum
-        (238, 130, 238),  # Violet
-        (218, 112, 214),  # Orchid
-        (199, 21, 133),  # Medium Violet Red
-        (148, 0, 211),  # Dark Violet
-        (186, 85, 211),  # Medium Orchid
-        (153, 50, 204),  # Dark Orchid
-        (138, 43, 226),  # Blue Violet
-        (147, 112, 219),  # Medium Purple
-        (128, 0, 128),  # Purple
-        (75, 0, 130),  # Indigo
-        (106, 90, 205),  # Slate Blue
-        (72, 61, 139),  # Dark Slate Blue
-        (123, 104, 238),
+        (255, 160, 122),  # Light Salmon
+        (250, 128, 114),  # Salmon
+        (233, 150, 122),  # Dark Salmon
+        (255, 140, 0),  # Dark Orange
+        (255, 165, 0),  # Orange
+        (255, 69, 0),  # Red Orange
+        (255, 127, 80),  # Coral
+        (255, 99, 71),  # Tomato
+        (255, 114, 86),  # Sizzling Red
+        (255, 115, 77),  # Outrageous Orange
+        (255, 204, 92),  # Orange Yellow
+        (255, 128, 0),  # Bittersweet Orange
+        (255, 117, 24),  # Pumpkin
     ]
+
+    FONT = pygame.font.SysFont("Aptos", 25)
+    LARGE_FONT = pygame.font.SysFont("Aptos", 40)
 
     # The list will contain the starting list that we need to sort
     def __init__(self, height, width, list) -> None:
@@ -77,11 +77,25 @@ def draw(draw_info) -> None:
     # This would fill the frame with the background color
     # Then the window goul get updated as per the color provided
     draw_info.window.fill(draw_info.BACKGROUND_COLOR)
+
+    controls = draw_info.FONT.render(
+        "R - Reset | Space - Start Sorting | A - Ascending | D - Desending",
+        1,
+        draw_info.WHITE,
+    )
+    sorting = draw_info.FONT.render(
+        "I - Insertion Sort | B - Bubble Sort", 1, draw_info.WHITE
+    )
+    # Drawing in the center
+    # T(Text width)/2 - W(window with)/2 = center of screen
+    draw_info.window.blit(controls, (draw_info.width / 2 - controls.get_width() / 2, 5))
+    draw_info.window.blit(sorting, (draw_info.width / 2 - sorting.get_width() / 2, 35))
+
     draw_list(draw_info)
     pygame.display.update()
 
 
-def draw_list(draw_info) -> None:
+def draw_list(draw_info, color_positions={}, clear_bg=False) -> None:
     """
     >>> draw_info = class_name
     """
@@ -91,6 +105,15 @@ def draw_list(draw_info) -> None:
     # All the blocks should contain different colors of easy difference
 
     lst = draw_info.list
+
+    if clear_bg:
+        clear_rect = (
+            draw_info.SIDE_PAD // 2,
+            draw_info.TOP_PAD,
+            draw_info.width - draw_info.SIDE_PAD,
+            draw_info.height - draw_info.TOP_PAD,
+        )
+        pygame.draw.rect(draw_info.window, draw_info.BACKGROUND_COLOR, clear_rect)
 
     # We would find out the x & y corr before making the rectagle
     # The rectange would we drawn from top to bottom
@@ -103,11 +126,17 @@ def draw_list(draw_info) -> None:
 
         color = draw_info.GRADIENT[i % len(draw_info.GRADIENT)]
 
+        for i in color_positions:
+            color = color_positions[i]
+
         pygame.draw.rect(
             draw_info.window,
             color,
             (X, Y, draw_info.block_width, draw_info.height),
         )
+
+    if clear_bg:
+        color = color_positions[i]
 
 
 def generate_starting_list(n, min_val, max_val) -> list:
@@ -119,6 +148,28 @@ def generate_starting_list(n, min_val, max_val) -> list:
         list.append(value)
 
     return list
+
+
+# -> Sorting algorithms
+
+
+def bubble_sort(draw_info, ascending=False):
+    lst = draw_info.lst
+
+    for i in range(len(lst) - 1):
+        for j in range(len(lst) - 1 - i):
+            num1 = lst[j]
+            num2 = lst[j + 1]
+
+            # It temporarily stop the execution and then resume when function called from the same place where it yeilded
+            # if not  we cannot use and other keypress
+
+            if (num1 > num2 and ascending) or (num1 < num2 and not ascending):
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+                # draw_list()
+                yield True
+
+    return lst
 
 
 def main():
@@ -133,6 +184,8 @@ def main():
     random_list = generate_starting_list(n, min_val, max_val)
 
     draw_information = DrawInformation(height=700, width=600, list=random_list)
+    sorting = False
+    ascending = True
 
     while run:
 
@@ -147,10 +200,19 @@ def main():
 
             if events.type != pygame.KEYDOWN:
                 continue
-
             if events.key == pygame.K_r:
                 random_list = generate_starting_list(n, min_val, max_val)
                 draw_information.set_list(random_list)
+                sorting = False
+
+            elif events.key == pygame.K_SPACE and sorting == False:
+                sorting = True
+
+            elif events.key == pygame.K_a and not sorting:
+                ascending = True
+
+            elif events.key == pygame.K_a and not sorting:
+                ascending = False
 
     pygame.quit()
 
