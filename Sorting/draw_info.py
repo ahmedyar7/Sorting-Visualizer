@@ -31,7 +31,7 @@ class DrawInfo:
         self.set_list(list)
 
     def set_list(self, list) -> None:
-        "This function would render the list to the screen"
+        "This function would set the list to the screen"
 
         self.list = list
         self.max_value = max(self.list)
