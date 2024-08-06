@@ -1,15 +1,10 @@
 import pygame
-from draw_info import DrawInfo
 
-
-# TODO : Make the screen black
-# TODO: Write the alogrithm name with green color with large font
-# TODO: Write all the other text in the white color with small font
+pygame.init()
 
 
 def draw(draw_info, algorithm_name, ascending) -> None:
 
-    # -> ALGORITHM TITLE
     algorithm_title = draw_info.LARGE_FONT.render(
         f"{algorithm_name} - {"Ascending" if ascending else "Descending"}",
         1,
@@ -22,7 +17,6 @@ def draw(draw_info, algorithm_name, ascending) -> None:
         draw_info.GREEN,
     )
 
-    # -> Sorting Algorithms TITLE
     sorting = draw_info.SMALL_FONT.render(
         "S - Selection Sort | X - Radix Sort | M - Merge Sort | H - Heap Sort | C - Counting Sort | B - Bubble Sort | I - Insertion Sort",
         draw_info.WHITE,
@@ -34,7 +28,6 @@ def draw(draw_info, algorithm_name, ascending) -> None:
         draw_info.WHITE,
     )
 
-    # -> CONTROLS
     controls = draw_info.SMALL_FONT.render(
         "R - Reset | A - Ascending | D - Descending",
         draw_info.WHITE,
@@ -47,12 +40,8 @@ def draw(draw_info, algorithm_name, ascending) -> None:
     )
 
 
-# TODO update the display
+def draw_list(draw_info, color_positions={}, clear_bg=False) -> None:
 
-
-def draw_list(draw_info, color_positions={}, clear_bg=False):
-
-    draw_info = DrawInfo()
     lst = draw_info.list
 
     if clear_bg:
