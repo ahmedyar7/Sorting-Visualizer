@@ -20,7 +20,7 @@ class DrawInformation:
     TOP_PAD = 150  # This shows the padding on the top mainly the controls
 
     # This contains different shades of purple
-    GRADIENT = [(36, 224, 83)]
+    GRADIENT = [(0, 255, 0)]
 
     FONT = pygame.font.SysFont("Aptos", 20)
     LARGE_FONT = pygame.font.SysFont("Aptos", 30)

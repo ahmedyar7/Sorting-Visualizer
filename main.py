@@ -35,7 +35,7 @@ def main():
     # This shows how quickly the loop runs
     clock = pygame.time.Clock()
 
-    n = 150
+    n = 250
     min_val = 0
     max_val = 500
     random_list = generate_starting_list(n, min_val, max_val)
