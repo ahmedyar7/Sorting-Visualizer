@@ -1,10 +1,9 @@
 import pygame
 import random
 import sys
-from visualization import draw, draw_list
+from visualization import draw
 from draw_info import DrawInfo
 
-pygame.init()
 pygame.mixer.init()
 
 TRANSITION_SOUND = pygame.mixer.Sound("sound.wav")
@@ -18,6 +17,9 @@ def play_sound() -> None:
 def stop_sound() -> None:
     if pygame.mixer.get_busy():
         pygame.mixer.stop()
+
+
+pygame.init()
 
 
 def generate_starting_list(n, min_value, max_value) -> list:
@@ -44,7 +46,7 @@ def main():
 
     sorting_algorithm_name = "Bubble Sort"
     sorting_algorithm_generator = None
-    # sorting_algorithm =
+    sorting_algorithm = "ss"
 
     while run:
         clock.tick(60)
@@ -71,10 +73,12 @@ def main():
                 sorting = False
                 stop_sound()
 
-            # elif event.key == pygame.K_SPACE and not sorting:
-            #     play_sound()
-            #     sorting = True
-            #     sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
+            elif event.key == pygame.K_SPACE and not sorting:
+                play_sound()
+                sorting = True
+                sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
+    pygame.quit()
+    sys.exit()
 
 
 if __name__ == "__main__":
