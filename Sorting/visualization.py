@@ -5,6 +5,7 @@ pygame.init()
 
 
 class Visualization:
+
     def __init__(self, draw_info: DrawInfo) -> None:
         self.draw_info = draw_info
 
@@ -16,25 +17,25 @@ class Visualization:
             self.draw_info.GREEN,
         )
         self.draw_info.window.blit(
-            algorithm_name,
-            (self.draw_info.width / 2 - algorithm_title.get_width() / 2),
-            65,
+            algorithm_title,
+            (self.draw_info.width / 2 - algorithm_title.get_width() / 2, 65),
         )
 
         sorting = self.draw_info.SMALL_FONT.render(
             "S - Selection Sort | X - Radix Sort | M - Merge Sort | H - Heap Sort | C - Counting Sort | B - Bubble Sort | I - Insertion Sort",
+            1,
             self.draw_info.WHITE,
         )
         self.draw_info.window.blit(
-            algorithm_name, (self.draw_info.width / 2 - sorting.get_width() / 2), 35
+            sorting,
+            (self.draw_info.width / 2 - sorting.get_width() / 2, 35),
         )
 
         controls = self.draw_info.SMALL_FONT.render(
-            "R - Reset | A - Ascending | D - Descending",
-            self.draw_info.WHITE,
+            "R - Reset | A - Ascending | D - Descending", self.draw_info.WHITE, 1
         )
         self.draw_info.window.blit(
-            algorithm_name, (self.draw_info.width / 2 - controls.get_width() / 2), 5
+            controls, (self.draw_info.width / 2 - controls.get_width() / 2, 5)
         )
 
     def draw_list(self, color_positions={}, clear_bg=False) -> None:
