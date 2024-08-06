@@ -18,7 +18,7 @@ class DrawInfo:
     SIDE_PADDING = 100
     TOP_PADDING = 150
 
-    SMALL_FONT = pygame.font.SysFont("Aptos", 20)
+    SMALL_FONT = pygame.font.SysFont("Aptos", 23)
     LARGE_FONT = pygame.font.SysFont("Aptos", 30)
 
     def __init__(self, width, height, list) -> None:
