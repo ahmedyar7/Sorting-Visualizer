@@ -16,7 +16,7 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
 8. **`Quick Sort`**
 9. **`Heap Sort`**
 
-## Depedencies 🚀
+## Depedencies 📦
 
 1. [**Python**](https://www.python.org/) 🐍
 2. **Pygame** 🎮
@@ -26,7 +26,7 @@ pip install pygame
 
 ```
 
-## Getting Started
+## Getting Started 🚀
 
 1. Download the Whole repository 📁 or
 2. Clone the Repository via git
@@ -59,7 +59,7 @@ python main.py
    - `draw()` contain rendering information about the controls/ options rendering and calls the `draw_list()` to draw the actual array
    - `draw_list()` This contain the information about the rendering of the list on to the screen.
 
-4. **`program.py`** 🖍️
+4. **`program.py`** 🦾
 
    - This file contain class `Program` that contain the actual driver code for the whole program, this file import stuff from all other program files.
 
@@ -68,3 +68,17 @@ python main.py
 
 5. **`main.py`** 🚦
    - This file import the `Program` class and the run the object of that class
+
+## Contributions🤝
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+- Fork the Project
+- Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+- Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+- Push to the Branch (`git push origin feature/AmazingFeature`)
+- Open a Pull Request
+
+## License ⚖
+
+[MIT LICENSE](LICENSE)
