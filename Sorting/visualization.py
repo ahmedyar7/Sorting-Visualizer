@@ -28,7 +28,7 @@ class Visualization:
         )
 
         controls = draw_info.SMALL_FONT.render(
-            "R - Reset | A - Ascending | D - Descending",
+            "R - Reset | SPACE - Start | A - Ascending | D - Descending",
             1,
             draw_info.WHITE,
         )
