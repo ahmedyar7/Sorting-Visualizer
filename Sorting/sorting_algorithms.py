@@ -122,3 +122,131 @@ class SortingAlgorithms:
 
         lst = draw_info.list
         yield from merge_sort_recursive(lst, 0)
+
+    def quick_sort(self, draw_info, ascending=True):
+
+        def partition(low, high):
+            pivot = lst[high]
+            i = low - 1
+
+            for j in range(low, high):
+                if (lst[j] <= pivot and ascending) or (
+                    lst[j] >= pivot and not ascending
+                ):
+
+                    i += 1
+                    lst[i], lst[j] = lst[j], lst[i]
+                    self.visuals.draw_list(
+                        draw_info,
+                        color_positions={i: draw_info.RED, j: draw_info.RED},
+                        clear_bg=True,
+                    )
+                    yield True
+
+            lst[i + 1], lst[high] = lst[high], lst[i + 1]
+            self.visuals.draw_list(
+                draw_info,
+                color_positions={i + 1: draw_info.RED, high: draw_info.RED},
+                clear_bg=True,
+            )
+            yield True
+            return i + 1
+
+        def quick_sort_recursive(low, high):
+            if low < high:
+                partition_index = yield from partition(low, high)
+                yield from quick_sort_recursive(low, partition_index - 1)
+                yield from quick_sort_recursive(partition_index + 1, high)
+
+        lst = draw_info.list
+        yield from quick_sort_recursive(0, len(lst) - 1)
+
+    def heap_sort(self, draw_info, ascending=True):
+
+        def heapify(n, i):
+            largest = i
+            l = 2 * i + 1
+            r = 2 * i + 2
+
+            if l < n and (
+                (lst[l] > lst[largest] and ascending)
+                or (lst[l] < lst[largest] and not ascending)
+            ):
+                largest = l
+
+            if r < n and (
+                (lst[r] > lst[largest] and ascending)
+                or (lst[l] < lst[largest] and not ascending)
+            ):
+                largest = r
+
+            if largest != i:
+                lst[i], lst[largest] = lst[largest], lst[i]
+                self.visuals.draw_list(
+                    draw_info,
+                    color_positions={i: draw_info.RED, largest: draw_info.RED},
+                    clear_bg=True,
+                )
+                yield True
+                yield from heapify(n, largest)
+
+        lst = draw_info.list
+        n = len(lst)
+
+        for i in range(n // 2 - 1, -1, -1):
+            yield from heapify(n, i)
+
+        for i in range(n - 1, 0, -1):
+            lst[i], lst[0] = lst[0], lst[i]
+
+            self.visuals.draw_list(
+                draw_info,
+                color_positions={i: draw_info.RED, 0: draw_info.RED},
+                clear_bg=True,
+            )
+
+            yield True
+            yield from heapify(i, 0)
+
+        return lst
+
+    def counting_sort(self, draw_info, ascending=True):
+        lst = draw_info.list
+
+        max_value = max(lst)
+        min_value = min(lst)
+
+        range_of_element = max_value - min_value + 1
+        count = [0] * range_of_element
+        output = [0] * len(lst)
+
+        for num in lst:
+            count[num - min_value] += 1
+
+        if ascending:
+            for i in range(1, len(count)):
+                count[i] += count[i - 1]
+        else:
+            for i in range(len(count) - 2, -1, -1):
+                count[i] += count[i + 1]
+
+        for i in range(len(lst) - 1, -1, -1):
+            output[count[lst[i] - min_value] - 1] = lst[i]
+            count[lst[i] - min_value] -= 1
+            self.visuals.draw_list(
+                draw_info,
+                color_positions={
+                    i: draw_info.RED,
+                },
+                clear_bg=True,
+            )
+            yield True
+
+        for i in range(len(lst)):
+            lst[i] = output[i]
+            self.visuals.draw_list(
+                draw_info, color_positions={i: draw_info.RED}, clear_bg=True
+            )
+            yield True
+
+        return lst

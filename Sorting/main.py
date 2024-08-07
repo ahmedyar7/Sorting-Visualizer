@@ -9,12 +9,14 @@ from sorting_algorithms import SortingAlgorithms
 TRANSITION_SOUND = pygame.mixer.Sound("sound.wav")
 
 
-class Controls:
+class Program:
     def __init__(self):
         pygame.mixer.init()
         pygame.init()
         self.visual = Visualization()
         self.algo = SortingAlgorithms()
+
+        self.driver_program()
 
     def play_sound(self) -> None:
         if not pygame.mixer.get_busy():
@@ -34,9 +36,9 @@ class Controls:
         clock = pygame.time.Clock()
 
         # -> PARAMETERS:
-        N = 100
+        N = 250
         MIN_VALUE = 0
-        MAX_VALUE = 200
+        MAX_VALUE = 500
 
         random_list = self.generate_starting_list(N, MIN_VALUE, MAX_VALUE)
 
@@ -102,10 +104,21 @@ class Controls:
                     sorting_algorithm = self.algo.merge_sort
                     sorting_algorithm_name = "Merge Sort"
 
+                elif event.key == pygame.K_q and not sorting:
+                    sorting_algorithm = self.algo.quick_sort
+                    sorting_algorithm_name = "Quick Sort"
+
+                elif event.key == pygame.K_h and not sorting:
+                    sorting_algorithm = self.algo.heap_sort
+                    sorting_algorithm_name = "Heap Sort"
+
+                elif event.key == pygame.K_c and not sorting:
+                    sorting_algorithm = self.algo.counting_sort
+                    sorting_algorithm_name = "Counting Sort"
+
         pygame.quit()
         sys.exit()
 
 
 if __name__ == "__main__":
-    c = Controls()
-    c.driver_program()
+    main = Program()
