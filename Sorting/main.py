@@ -1,85 +1,87 @@
 import pygame
 import random
 import sys
-from visualization import draw
+from visualization import Visualization
 from draw_info import DrawInfo
 
-pygame.mixer.init()
 
 TRANSITION_SOUND = pygame.mixer.Sound("sound.wav")
 
 
-def play_sound() -> None:
-    if not pygame.mixer.get_busy():
-        TRANSITION_SOUND.play(-1)  # Play sound in loop
+class Controls:
+    def __init__(self):
+        pygame.mixer.init()
+        pygame.init()
+        self.visual = Visualization()
 
+    def play_sound(self) -> None:
+        if not pygame.mixer.get_busy():
+            TRANSITION_SOUND.play(-1)  # Play sound in loop
 
-def stop_sound() -> None:
-    if pygame.mixer.get_busy():
-        pygame.mixer.stop()
+    def stop_sound(self) -> None:
+        if pygame.mixer.get_busy():
+            pygame.mixer.stop()
 
+    def generate_starting_list(self, n, min_value, max_value) -> list:
+        return [random.randint(min_value, max_value) for _ in range(n)]
 
-pygame.init()
+    def driver_program(self):
 
+        run = True
 
-def generate_starting_list(n, min_value, max_value) -> list:
-    return [random.randint(min_value, max_value) for _ in range(n)]
+        clock = pygame.time.Clock()
 
+        # -> PARAMETERS:
+        N = 50
+        MIN_VALUE = 0
+        MAX_VALUE = 100
 
-def main():
+        random_list = self.generate_starting_list(N, MIN_VALUE, MAX_VALUE)
 
-    run = True
+        draw_info = DrawInfo(width=1280, height=650, list=random_list)
 
-    clock = pygame.time.Clock()
+        sorting = False
+        ascending = True
 
-    # -> PARAMETERS:
-    N = 50
-    MIN_VALUE = 0
-    MAX_VALUE = 100
+        sorting_algorithm_name = "Bubble Sort"
+        sorting_algorithm_generator = None
+        sorting_algorithm = "ss"
 
-    random_list = generate_starting_list(N, MIN_VALUE, MAX_VALUE)
+        while run:
+            clock.tick(60)
 
-    draw_info = DrawInfo(width=1280, height=650, list=random_list)
+            if sorting:
+                try:
+                    next(sorting_algorithm_generator)
+                except StopIteration:
+                    sorting = False
+                    self.stop_sound()  # Stops sound when sorting ends
+            else:
+                self.visual.draw(draw_info, sorting_algorithm_name, ascending)
 
-    sorting = False
-    ascending = True
+            for event in pygame.event.get():
 
-    sorting_algorithm_name = "Bubble Sort"
-    sorting_algorithm_generator = None
-    sorting_algorithm = "ss"
+                if event.type == pygame.QUIT:
+                    run = False
+                if event.type != pygame.KEYDOWN:
+                    continue
 
-    while run:
-        clock.tick(60)
+                elif event.key == pygame.K_r:
+                    random_list = self.generate_starting_list(N, MIN_VALUE, MAX_VALUE)
+                    draw_info.set_list(random_list)
+                    sorting = False
+                    self.stop_sound()
 
-        if sorting:
-            try:
-                next(sorting_algorithm_generator)
-            except StopIteration:
-                sorting = False
-                stop_sound()  # Stops sound when sorting ends
-        else:
-            draw(draw_info, sorting_algorithm_name, ascending)
-
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                run = False
-            if event.type != pygame.KEYDOWN:
-                continue
-
-            elif event.key == pygame.K_r:
-                random_list = generate_starting_list(N, MIN_VALUE, MAX_VALUE)
-                draw_info.set_list(random_list)
-                sorting = False
-                stop_sound()
-
-            elif event.key == pygame.K_SPACE and not sorting:
-                play_sound()
-                sorting = True
-                sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
-    pygame.quit()
-    sys.exit()
+                elif event.key == pygame.K_SPACE and not sorting:
+                    self.play_sound()
+                    sorting = True
+                    sorting_algorithm_generator = sorting_algorithm(
+                        draw_info, ascending
+                    )
+        pygame.quit()
+        sys.exit()
 
 
 if __name__ == "__main__":
-    main()
+    c = Controls()
+    c.driver_program()
