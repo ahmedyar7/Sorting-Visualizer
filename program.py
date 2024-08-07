@@ -36,7 +36,7 @@ class Program:
         clock = pygame.time.Clock()
 
         # -> PARAMETERS:
-        N = 250
+        N = 350
         MIN_VALUE = 0
         MAX_VALUE = 500
 
