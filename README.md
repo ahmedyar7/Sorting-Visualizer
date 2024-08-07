@@ -18,8 +18,19 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
 
 ## Depedencies 📦
 
-1. [**Python**](https://www.python.org/) 🐍
+1. **Python** 🐍
 2. **Pygame** 🎮
+
+<div align="center">
+   <a href="https://www.python.org/">
+      <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge" height="50" alt="python logo"  />
+  </a>
+  <a href="https://www.pygame.org/news">
+      <img src="pygamenew.png" height="50" alt="python logo"  />
+  </a>
+</div>
+
+###
 
 ```bash
 pip install pygame
