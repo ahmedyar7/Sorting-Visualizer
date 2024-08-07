@@ -250,3 +250,83 @@ class SortingAlgorithms:
             yield True
 
         return lst
+
+    def radix_sort(self, draw_info, ascending=True):
+
+        def counting_sort_exp(arr, exp):
+            n = len(arr)
+            output = [0] * n
+            count = [0] * 10
+
+            for i in range(n):
+                index = arr[i] // exp
+                count[index % 10] += 1
+
+            if ascending:
+                for i in range(1, 10):
+                    count[i] += count[i - 1]
+            else:
+                for i in range(8, -1, -1):
+                    count[i] += count[i + 1]
+            i = n - 1
+
+            while i >= 0:
+                index = arr[i] // exp
+                output[count[index % 10] - 1] = arr[i]
+                count[index % 10] -= 1
+
+                self.visuals.draw_list(
+                    draw_info,
+                    color_positions={i: draw_info.RED},
+                    clear_bg=True,
+                )
+                yield True
+                i -= 1
+
+            for i in range(n):
+                arr[i] = output[i]
+
+        lst = draw_info.list
+        max_value = max(lst)
+        exp = 1
+
+        while max_value // exp > 0:
+            yield from counting_sort_exp(lst, exp)
+            exp *= 10
+
+        return lst
+
+    def comb_sort(self, draw_info, ascending=True):
+
+        def get_next_gap(gap):
+            gap = (gap * 10) // 13
+            if gap < 1:
+                return 1
+            return gap
+
+        lst = draw_info.list
+        n = len(lst)
+        gap = n
+        swapped = True
+
+        while gap != 1 or swapped:
+            gap = get_next_gap(gap)
+            swapped = False
+
+            for i in range(n - gap):
+                if (ascending and lst[i] > lst[i + gap]) or (
+                    not ascending and lst[i] < lst[i + gap]
+                ):
+                    lst[i], lst[i + gap] = lst[i + gap], lst[i]
+                    swapped = True
+                    self.visuals.draw_list(
+                        draw_info,
+                        color_positions={
+                            i: draw_info.RED,
+                            i + gap: draw_info.RED,
+                        },
+                        clear_bg=True,
+                    )
+                    yield True
+
+        return lst

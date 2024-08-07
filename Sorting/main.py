@@ -116,6 +116,14 @@ class Program:
                     sorting_algorithm = self.algo.counting_sort
                     sorting_algorithm_name = "Counting Sort"
 
+                elif event.key == pygame.K_x and not sorting:
+                    sorting_algorithm = self.algo.radix_sort
+                    sorting_algorithm_name = "Radix Sort"
+
+                elif event.key == pygame.K_k and not sorting:
+                    sorting_algorithm = self.algo.comb_sort
+                    sorting_algorithm_name = "Comb Sort"
+
         pygame.quit()
         sys.exit()
 

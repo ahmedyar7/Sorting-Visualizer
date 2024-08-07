@@ -17,8 +17,8 @@ class DrawInfo:
 
     GRADIENT = [GREEN]
 
-    SMALL_FONT = pygame.font.SysFont("Aptos", 20)
-    LARGE_FONT = pygame.font.SysFont("Aptos", 30)
+    SMALL_FONT = pygame.font.SysFont("Aptos", 21)
+    LARGE_FONT = pygame.font.SysFont("Aptos", 31)
 
     def __init__(self, width, height, list) -> None:
         self.width = width
