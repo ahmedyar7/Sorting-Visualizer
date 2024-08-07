@@ -3,6 +3,7 @@ import random
 import sys
 from visualization import Visualization
 from draw_info import DrawInfo
+from sorting_algorithms import SortingAlgorithms
 
 
 TRANSITION_SOUND = pygame.mixer.Sound("sound.wav")
@@ -13,6 +14,7 @@ class Controls:
         pygame.mixer.init()
         pygame.init()
         self.visual = Visualization()
+        self.algo = SortingAlgorithms()
 
     def play_sound(self) -> None:
         if not pygame.mixer.get_busy():
@@ -32,9 +34,9 @@ class Controls:
         clock = pygame.time.Clock()
 
         # -> PARAMETERS:
-        N = 50
+        N = 100
         MIN_VALUE = 0
-        MAX_VALUE = 100
+        MAX_VALUE = 200
 
         random_list = self.generate_starting_list(N, MIN_VALUE, MAX_VALUE)
 
@@ -44,8 +46,8 @@ class Controls:
         ascending = True
 
         sorting_algorithm_name = "Bubble Sort"
+        sorting_algorithm = self.algo.bubble_sort
         sorting_algorithm_generator = None
-        sorting_algorithm = "ss"
 
         while run:
             clock.tick(60)
@@ -78,6 +80,28 @@ class Controls:
                     sorting_algorithm_generator = sorting_algorithm(
                         draw_info, ascending
                     )
+
+                elif event.key == pygame.K_a and not sorting:
+                    ascending = True
+                elif event.key == pygame.K_d and not sorting:
+                    ascending = False
+
+                elif event.key == pygame.K_b and not sorting:
+                    sorting_algorithm = self.algo.bubble_sort
+                    sorting_algorithm_name = "Bubble Sort"
+
+                elif event.key == pygame.K_i and not sorting:
+                    sorting_algorithm = self.algo.insertion_sort
+                    sorting_algorithm_name = "Insertion Sort"
+
+                elif event.key == pygame.K_s and not sorting:
+                    sorting_algorithm = self.algo.selection_sort
+                    sorting_algorithm_name = "Selection Sort"
+
+                elif event.key == pygame.K_m and not sorting:
+                    sorting_algorithm = self.algo.merge_sort
+                    sorting_algorithm_name = "Merge Sort"
+
         pygame.quit()
         sys.exit()
 
