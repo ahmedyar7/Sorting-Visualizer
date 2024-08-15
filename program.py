@@ -36,7 +36,7 @@ class Program:
         clock = pygame.time.Clock()
 
         # -> PARAMETERS:
-        N = 100
+        N = 1000
         MIN_VALUE = 0
         MAX_VALUE = 500
 
@@ -52,7 +52,7 @@ class Program:
         sorting_algorithm_generator = None
 
         while run:
-            clock.tick(60)
+            # clock.tick(60)
 
             if sorting:
                 try:
@@ -126,7 +126,3 @@ class Program:
 
         pygame.quit()
         sys.exit()
-
-
-if __name__ == "__main__":
-    main = Program()
