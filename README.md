@@ -15,6 +15,7 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
 7. **`Counting Sort`**
 8. **`Quick Sort`**
 9. **`Heap Sort`**
+10. **`Shell Sort`**
 
 ## Depedencies 📦
 

@@ -19,7 +19,7 @@ class Visualization:
         )
 
         sorting = draw_info.SMALL_FONT.render(
-            "S - Selection Sort | X - Radix Sort | M - Merge Sort | H - Heap Sort | C - Counting Sort | B - Bubble Sort | I - Insertion Sort | K - Comb Sort",
+            "S - Selection | X - Radix | M - Merge | H - Heap | C - Counting | B - Bubble | I - Insertion | K - Comb | L - Shell",
             1,
             draw_info.WHITE,
         )

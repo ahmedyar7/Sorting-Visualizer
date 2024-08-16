@@ -331,36 +331,36 @@ class SortingAlgorithms:
 
         return lst
 
-    # def shell_sort(self, draw_info, ascending=True):
-    #     lst = draw_info.list
-    #     n = len(lst)
-    #     gap = n // 2
+    def shell_sort(self, draw_info, ascending=True):
+        lst = draw_info.list
+        n = len(lst)
+        gap = n // 2
 
-    #     while gap > 0:
-    #         for i in range(gap, n):
-    #             temp = lst[i]
-    #             j = i
+        while gap > 0:
+            for i in range(gap, n):
+                temp = lst[i]
+                j = i
 
-    #             while j >= gap and (
-    #                 (ascending and lst[j - gap] > temp)
-    #                 or (not ascending and lst[j - gap] < temp)
-    #             ):
-    #                 lst[j] = lst[j - gap]
-    #                 j -= gap
-    #                 self.visuals.draw_list(
-    #                     draw_info,
-    #                     color_positions={j: draw_info.RED, j + gap: draw_info.RED},
-    #                     clear_bg=True,
-    #                 )
-    #                 yield True
+                while j >= gap and (
+                    (ascending and lst[j - gap] > temp)
+                    or (not ascending and lst[j - gap] < temp)
+                ):
+                    lst[j] = lst[j - gap]
+                    j -= gap
+                    self.visuals.draw_list(
+                        draw_info,
+                        color_positions={j: draw_info.RED, j + gap: draw_info.RED},
+                        clear_bg=True,
+                    )
+                    yield True
 
-    #             lst[j] = temp
-    #             self.visuals.draw_list(
-    #                 draw_info, color_positions={j: draw_info.RED}, clear_bg=True
-    #             )
+                lst[j] = temp
+                self.visuals.draw_list(
+                    draw_info, color_positions={j: draw_info.RED}, clear_bg=True
+                )
 
-    #             yield True
+                yield True
 
-    #         gap //= 2
+            gap //= 2
 
-    #     return lst
+        return lst

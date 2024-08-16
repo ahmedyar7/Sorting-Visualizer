@@ -124,5 +124,9 @@ class Program:
                     sorting_algorithm = self.algo.comb_sort
                     sorting_algorithm_name = "Comb Sort"
 
+                elif event.key == pygame.K_l and not sorting:
+                    sorting_algorithm = self.algo.shell_sort
+                    sorting_algorithm_name = "Shell Sort"
+
         pygame.quit()
         sys.exit()
