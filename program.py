@@ -6,7 +6,7 @@ from draw_info import DrawInfo
 from sorting_algorithms import SortingAlgorithms
 
 
-TRANSITION_SOUND = pygame.mixer.Sound("sound.wav")
+TRANSITION_SOUND = pygame.mixer.Sound("sounds.mp3")
 
 
 class Program:

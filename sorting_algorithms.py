@@ -1,5 +1,4 @@
 from visualization import Visualization
-from draw_info import DrawInfo
 
 
 class SortingAlgorithms:
