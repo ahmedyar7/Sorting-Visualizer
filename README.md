@@ -4,18 +4,15 @@
 
 This python project was inspired by **[Green Code Sorting Algorithm Video]("https://www.youtube.com/watch?v=N4JVT3eVBP8")**. This python program contain all the popular sorting algoritms visualization by using **`pygame`** and python **`generators`**
 
-### Algorithms Implemented 🧮
+# Sorting Algorithms 🧮
 
-1. **`Bubble Sort`**
-2. **`Selection Sort`**
-3. **`Insertion Sort`**
-4. **`Merge Sort`**
-5. **`Comb Sort`**
-6. **`Radix Sort`**
-7. **`Counting Sort`**
-8. **`Quick Sort`**
-9. **`Heap Sort`**
-10. **`Shell Sort`**
+| Bubble Sort                           | Selection Sort                              | Insertion Sort                   | Merge Sort                          | Comb Sort                         |
+| ------------------------------------- | ------------------------------------------- | -------------------------------- | ----------------------------------- | --------------------------------- |
+| ![Bubble Sort](img/bubble%20sort.png) | ![Selection Sort](img/selection%20sort.png) | ![Insertion Sort](img/image.png) | ![Merge Sort](img/merge%20sort.png) | ![Comb Sort](img/Comb%20sort.png) |
+
+| Radix Sort                          | Counting Sort                             | Quick Sort                          | Heap Sort                         | Shell Sort                          |
+| ----------------------------------- | ----------------------------------------- | ----------------------------------- | --------------------------------- | ----------------------------------- |
+| ![Radix Sort](img/radix%20sort.png) | ![Counting Sort](img/Counting%20sort.png) | ![Quick Sort](img/quick%20sort.png) | ![Heap Sort](img/Heap%20sort.png) | ![Shell Sort](img/shell%20sort.png) |
 
 ## Depedencies 📦
 
