@@ -6,13 +6,13 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
 
 # Sorting Algorithms 🧮
 
-| Bubble Sort                           | Selection Sort                              | Insertion Sort                   | Merge Sort                          | Comb Sort                         |
-| ------------------------------------- | ------------------------------------------- | -------------------------------- | ----------------------------------- | --------------------------------- |
-| ![Bubble Sort](img/bubble%20sort.png) | ![Selection Sort](img/selection%20sort.png) | ![Insertion Sort](img/image.png) | ![Merge Sort](img/merge%20sort.png) | ![Comb Sort](img/Comb%20sort.png) |
+| Bubble Sort                                     | Selection Sort                                        | Insertion Sort                             | Merge Sort                                    | Comb Sort                                   |
+| ----------------------------------------------- | ----------------------------------------------------- | ------------------------------------------ | --------------------------------------------- | ------------------------------------------- |
+| ![Bubble Sort](assets/images/bubble%20sort.png) | ![Selection Sort](assets/images/selection%20sort.png) | ![Insertion Sort](assets/images/image.png) | ![Merge Sort](assets/images/merge%20sort.png) | ![Comb Sort](assets/images/Comb%20sort.png) |
 
-| Radix Sort                          | Counting Sort                             | Quick Sort                          | Heap Sort                         | Shell Sort                          |
-| ----------------------------------- | ----------------------------------------- | ----------------------------------- | --------------------------------- | ----------------------------------- |
-| ![Radix Sort](img/radix%20sort.png) | ![Counting Sort](img/Counting%20sort.png) | ![Quick Sort](img/quick%20sort.png) | ![Heap Sort](img/Heap%20sort.png) | ![Shell Sort](img/shell%20sort.png) |
+| Radix Sort                                    | Counting Sort                                       | Quick Sort                                    | Heap Sort                                   | Shell Sort                                    |
+| --------------------------------------------- | --------------------------------------------------- | --------------------------------------------- | ------------------------------------------- | --------------------------------------------- |
+| ![Radix Sort](assets/images/radix%20sort.png) | ![Counting Sort](assets/images/Counting%20sort.png) | ![Quick Sort](assets/images/quick%20sort.png) | ![Heap Sort](assets/images/Heap%20sort.png) | ![Shell Sort](assets/images/shell%20sort.png) |
 
 ## Depedencies 📦
 
@@ -24,7 +24,7 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
       <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge" height="50" alt="python logo"  />
   </a>
   <a href="https://www.pygame.org/news">
-      <img src="pygamenew.png" height="50" alt="python logo"  />
+      <img src="assets//images/pygamenew.png" height="50" alt="python logo"  />
   </a>
 </div>
 
