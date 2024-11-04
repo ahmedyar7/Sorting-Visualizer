@@ -1,7 +1,5 @@
 # Sorting Visualizer 🧮
 
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7229753542264160256?compact=1" height="399" width="710" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-
 ## Overview 📃
 
 This python project was inspired by **[Green Code Sorting Algorithm Video]("https://www.youtube.com/watch?v=N4JVT3eVBP8")**. This python program contain all the popular sorting algoritms visualization by using **`pygame`** and python **`generators`**
