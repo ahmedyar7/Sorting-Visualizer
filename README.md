@@ -6,13 +6,13 @@ This python project was inspired by **[Green Code Sorting Algorithm Video]("http
 
 # Sorting Algorithms 🧮
 
-| Bubble Sort                           | Selection Sort                              | Insertion Sort                   | Merge Sort                          | Comb Sort                         |
-| ------------------------------------- | ------------------------------------------- | -------------------------------- | ----------------------------------- | --------------------------------- |
-| ![Bubble Sort](img/bubble%20sort.png) | ![Selection Sort](img/selection%20sort.png) | ![Insertion Sort](img/image.png) | ![Merge Sort](img/merge%20sort.png) | ![Comb Sort](img/Comb%20sort.png) |
+| Bubble Sort                                    | Selection Sort                                       | Insertion Sort                            | Merge Sort                                   | Comb Sort                                  |
+| ---------------------------------------------- | ---------------------------------------------------- | ----------------------------------------- | -------------------------------------------- | ------------------------------------------ |
+| ![Bubble Sort](.assets/.img/bubble%20sort.png) | ![Selection Sort](.assets/.img/selection%20sort.png) | ![Insertion Sort](.assets/.img/image.png) | ![Merge Sort](.assets/.img/merge%20sort.png) | ![Comb Sort](.assets/.img/Comb%20sort.png) |
 
-| Radix Sort                          | Counting Sort                             | Quick Sort                          | Heap Sort                         | Shell Sort                          |
-| ----------------------------------- | ----------------------------------------- | ----------------------------------- | --------------------------------- | ----------------------------------- |
-| ![Radix Sort](img/radix%20sort.png) | ![Counting Sort](img/Counting%20sort.png) | ![Quick Sort](img/quick%20sort.png) | ![Heap Sort](img/Heap%20sort.png) | ![Shell Sort](img/shell%20sort.png) |
+| Radix Sort                                   | Counting Sort                                      | Quick Sort                                   | Heap Sort                                  | Shell Sort                                   |
+| -------------------------------------------- | -------------------------------------------------- | -------------------------------------------- | ------------------------------------------ | -------------------------------------------- |
+| ![Radix Sort](.assets/.img/radix%20sort.png) | ![Counting Sort](.assets/.img/Counting%20sort.png) | ![Quick Sort](.assets/.img/quick%20sort.png) | ![Heap Sort](.assets/.img/Heap%20sort.png) | ![Shell Sort](.assets/.img/shell%20sort.png) |
 
 ## Depedencies 📦
 
